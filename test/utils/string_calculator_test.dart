@@ -30,4 +30,13 @@ void main() {
     final calculator = StringCalculator();
     expect(() => calculator.add('1,-2'), throwsException);
   });
+  test('shows all negative numbers in exception message', () {
+    final calculator = StringCalculator();
+    expect(
+      () => calculator.add('1,-2,-3'),
+      throwsA(
+        predicate((e) => e.toString().contains('-2,-3')),
+      ),
+    );
+  });
 }
