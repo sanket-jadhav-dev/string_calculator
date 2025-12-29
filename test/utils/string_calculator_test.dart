@@ -10,4 +10,8 @@ void main() {
     final calculator = StringCalculator();
     expect(calculator.add('1'), 1);
   });
+  test('returns sum of two comma separated numbers', () {
+    final calculator = StringCalculator();
+    expect(calculator.add('1,5'), 6);
+  });
 }
