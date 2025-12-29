@@ -13,6 +13,16 @@ class StringCalculator {
 
     final values = numbersPart.replaceAll('\n', delimiter).split(delimiter);
 
-    return values.map(int.parse).reduce((a, b) => a + b);
+    final parsedNumbers = values.map(int.parse).toList();
+
+    final negatives = parsedNumbers.where((n) => n < 0).toList();
+
+    if (negatives.isNotEmpty) {
+      throw Exception(
+        'negative numbers not allowed ${negatives.join(',')}',
+      );
+    }
+
+    return parsedNumbers.reduce((a, b) => a + b);
   }
 }
