@@ -14,7 +14,6 @@ class StringCalculator {
     final values = numbersPart.replaceAll('\n', delimiter).split(delimiter);
 
     final parsedNumbers = values.map(int.parse).toList();
-
     final negatives = parsedNumbers.where((n) => n < 0).toList();
 
     if (negatives.isNotEmpty) {
@@ -23,6 +22,6 @@ class StringCalculator {
       );
     }
 
-    return parsedNumbers.reduce((a, b) => a + b);
+    return parsedNumbers.fold(0, (sum, n) => sum + n);
   }
 }
